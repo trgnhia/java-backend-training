@@ -55,12 +55,10 @@ public class Student {
         Student student2 = new Student();
         Student student3 = new Student(22, "Nguyen b", 9.5);
 
-        String info1 = student1.toString();
-        String info2 = student2.toString();
-        String info3 = student3.toString();
-        System.out.println(info1);
-        System.out.println(info2);
-        System.out.println(info3);
+        System.out.println(student1);
+        System.out.println(student2);
+        System.out.println(student3);
+
 
         List<Student> listStudents = new ArrayList<>();
         listStudents.add(student1);
