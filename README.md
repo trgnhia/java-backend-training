@@ -1,13 +1,43 @@
-## Git Practice - Week 1
+# Java Backend Training
 
-### Completed tasks
-- Install Git & config user
+This repository contains weekly practice tasks for Java Core and backend fundamentals.
+
+---
+
+## Week 01
+
+### 1. Git Practice
+- Install Git & configure user
 - Initialize repository
-- Add .gitignore for Java
+- Add `.gitignore`
 - Commit & push
 - Clone repository
-- Create branch feature-login
-- Create branch feature-register
+- Create branches: `feature-login`, `feature-register`
+- Practice: stash, reset, cherry-pick, pull request
 
-### Git log
+---
 
+### 2. Java Basics & OOP
+
+#### Topics
+- JDK/JRE/JVM
+- Data types, variables, operators
+- Control flow: if/switch/loops
+- OOP fundamentals
+- Inheritance, abstraction, polymorphism
+- Exception handling
+- Basic file I/O
+
+#### Exercises
+- Calculator (sum/sub/mul/div)
+- Circle perimeter & area
+- Even/odd & divisible by 3
+- Multiplication table (2–9)
+- `Student` class + average score
+- `Shape` (abstract) + `Circle/Rectangle`
+- `Playable` interface + `MusicPlayer`
+- Division with exception handling
+- Read names from text file
+
+#### Extra Practice
+- Extended inheritance & polymorphism scenarios
