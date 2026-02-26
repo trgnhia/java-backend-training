@@ -1,4 +1,4 @@
-package generics;
+package generics.extension;
 
 public class Printer <T>{
     private T thingToPrint;
