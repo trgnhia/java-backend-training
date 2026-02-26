@@ -29,15 +29,16 @@ This repository contains weekly practice tasks for Java Core and backend fundame
 - Basic file I/O
 
 #### Exercises
-- Calculator (sum/sub/mul/div)
-- Circle perimeter & area
-- Even/odd & divisible by 3
-- Multiplication table (2–9)
-- `Student` class + average score
-- `Shape` (abstract) + `Circle/Rectangle`
-- `Playable` interface + `MusicPlayer`
-- Division with exception handling
-- Read names from text file
+
+| Exercise | Source Code |
+|----------|------------|
+| Calculator (sum/sub/mul/div) | [Calculator.java](week_01/basic_oop/src/task_1/Calculator.java) |
+| Circle perimeter & area | [Calculator.java](week_01/basic_oop/src/task_1/Calculator.java) |
+| Even/odd & divisible by 3 | [Loop.java](week_01/basic_oop/src/task_2/Loop.java) |
+| Multiplication table (2–9) | [Loop.java](week_01/basic_oop/src/task_2/Loop.java) |
+| Shape + Circle/Rectangle (Inheritance & Polymorphism) | [task_4/oop1](week_01/basic_oop/src/task_4/oop1/) |
+| Playable + MusicPlayer (Interface) | [task_4/oop2](week_01/basic_oop/src/task_4/oop2/) |
+| Division with exception and Read names from file| [Main.java](week_01/basic_oop/src/task_5/Main.java) |
 
 #### Extra Practice
 - Extended inheritance & polymorphism scenarios
