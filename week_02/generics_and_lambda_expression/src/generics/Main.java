@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    private static void printList(List<?> myList) {
+    private static <T> void printList(List<T> myList) {
         for(int i = 0; i < myList.size(); i++) {
             System.out.println(myList.get(i));
         }
