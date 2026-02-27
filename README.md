@@ -42,3 +42,29 @@ This repository contains weekly practice tasks for Java Core and backend fundame
 
 #### Extra Practice
 - Extended inheritance & polymorphism scenarios
+---
+## Week 02
+
+### Java Collection Framework & Generics
+
+#### Topics
+- Collection Framework: List, Set, Map, Iterator
+- HashMap vs TreeMap
+- Generics (`<>`)
+- Functional Interface
+- Lambda expression
+
+#### Exercises
+| Exercise | Source Code |
+|-----------|------------|
+| Sort `List<String>` alphabetically | [SortNames.java](week_02/collection_framework/src/collections/SortNames.java) |
+| Count word frequency using `Map<String, Integer>` | [Counting.java](week_02/collection_framework/src/collections/Counting.java) |
+| Generic method to print array elements | [GenericExample.java](week_02/generics_and_lambda_expression/src/generics/Main.java) |
+| Filter even numbers using Lambda | [LambdaExample.java](week_02/generics_and_lambda_expression/src/lambda_expression/Main.java) |
+
+#### Extra Practice
+- Extend generics practice  
+  --> [Generics Extension](week_02/generics_and_lambda_expression/src/generics/extension/)
+
+- Extend lambda practice  
+  --> [Lambda Extension](week_02/generics_and_lambda_expression/src/lambda_expression/extension/)
