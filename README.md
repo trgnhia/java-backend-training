@@ -55,16 +55,25 @@ This repository contains weekly practice tasks for Java Core and backend fundame
 - Lambda expression
 
 #### Exercises
+
 | Exercise | Source Code |
 |-----------|------------|
 | Sort `List<String>` alphabetically | [SortNames.java](week_02/collection_framework/src/collections/SortNames.java) |
 | Count word frequency using `Map<String, Integer>` | [Counting.java](week_02/collection_framework/src/collections/Counting.java) |
 | Generic method to print array elements | [GenericExample.java](week_02/generics_and_lambda_expression/src/generics/Main.java) |
 | Filter even numbers using Lambda | [LambdaExample.java](week_02/generics_and_lambda_expression/src/lambda_expression/Main.java) |
+| Filter `Student` with score >= 7 and sort descending by score | [Stream.java](week_02/StreamAPI/src/Stream.java) |
+| Group students by age using `Collectors.groupingBy()` | [Stream.java](week_02/StreamAPI/src/Stream.java) |
+
+---
 
 #### Extra Practice
+
 - Extend generics practice  
-  --> [Generics Extension](week_02/generics_and_lambda_expression/src/generics/extension/)
+   [Generics Extension](week_02/generics_and_lambda_expression/src/generics/extension/)
 
 - Extend lambda practice  
-  --> [Lambda Extension](week_02/generics_and_lambda_expression/src/lambda_expression/extension/)
+   [Lambda Extension](week_02/generics_and_lambda_expression/src/lambda_expression/extension/)
+
+- Extended Stream pipeline exercises  
+   [Stream Practices](week_02/StreamAPI/src/stream_practices/)
