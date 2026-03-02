@@ -1,9 +1,4 @@
-package stream_practices;
-
-import java.util.Arrays;
-import java.util.List;
-
+package stream_practic
 public class StreamEx2 {
-    public static void main(String[] args) {
-    }
+
 }
