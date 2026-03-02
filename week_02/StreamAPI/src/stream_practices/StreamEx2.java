@@ -1,4 +1,4 @@
-package stream_practic
+package stream_practices;
 public class StreamEx2 {
 
 }
