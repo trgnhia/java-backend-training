@@ -1,6 +1,6 @@
 package stream_practices;
 
-import java.util.Arrays;
+import java.util.*;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
@@ -95,6 +95,19 @@ class User {
 
         System.out.println(usernameHaveThan6000Salary);
 
+        // grouping by
+
+        // group by age
+        Map<Integer, List<User>> groupedByAge = users.stream()
+                .collect(Collectors.groupingBy(user -> user.getAge()));
+
+        System.out.println(groupedByAge);
+
+        // group by age - only name
+        Map<Integer, List<String>> groupedByAgeOnlyName = users.stream()
+                .collect(Collectors.groupingBy(User::getAge, Collectors.mapping(User::getName, Collectors.toList())));
+
+        System.out.println(groupedByAgeOnlyName);
 
     }
 
@@ -107,7 +120,7 @@ public class StreamEx2 {
         List<Long> result = numbers.stream()
                 .filter(n -> n % 2 == 0)
                 .map(n -> (long) n * 2)
-                .collect(Collectors.toList());
+                .toList();
         System.out.println(result);
 
         List<Integer> result2 = numbers.stream()
