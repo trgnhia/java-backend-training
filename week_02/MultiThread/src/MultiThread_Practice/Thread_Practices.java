@@ -2,17 +2,16 @@ package MultiThread_Practice;
 
 public class Thread_Practices {
     public static void main(String[] args) {
-//        Runnable task = () -> {
-//            System.out.println("Hello world");
-//        };
-//        Thread t = new Thread(task);
-//        t.start();
         Runnable task2 = () -> {
             for (int i = 1; i <=3 ; i++) {
                 System.out.println(
                         Thread.currentThread().getName() + " - " + i
                 );
             } try {
+                /**
+                 * Thread chuyen sang trang thai TIME_WAITING
+                 * Nhuong CPU cho thread khac, sau 500ms thi thuc thi runnable
+                 */
                 Thread.sleep(500);
             } catch (InterruptedException e) {
                 e.printStackTrace();
