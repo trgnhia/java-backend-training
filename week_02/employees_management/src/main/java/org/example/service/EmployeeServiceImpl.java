@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.*;
 
 public class EmployeeServiceImpl implements EmployeeService{
-    private final Map<String, Employee> employyes = new HashMap<>();
+    private final Map<String, Employee> employees = new HashMap<>();
 
     @Override
     public void addEmployee(Employee employee) {
