@@ -43,17 +43,17 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "department='" + department + '\'' +
-                ", id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", salary=" + salary +
-                ", hiredDate=" + hiredDate +
-                ", employeeType=" + employeeType +
-                ", status=" + status +
-                '}';
+        return "{\n" +
+                "  \"id\": \"" + id + "\",\n" +
+                "  \"name\": \"" + name + "\",\n" +
+                "  \"email\": \"" + email + "\",\n" +
+                "  \"phone\": \"" + phone + "\",\n" +
+                "  \"department\": \"" + department + "\",\n" +
+                "  \"salary\": " + salary + ",\n" +
+                "  \"hiredDate\": \"" + hiredDate + "\",\n" +
+                "  \"employeeType\": \"" + employeeType + "\",\n" +
+                "  \"status\": \"" + status + "\"\n" +
+                "}";
     }
 
     public String getDepartment() {

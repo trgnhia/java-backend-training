@@ -8,7 +8,12 @@ import org.example.validation.Validator;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
+
+import static java.util.Comparator.comparing;
 
 public class EmployeeController {
     private final EmployeeService employeeService;
@@ -23,17 +28,16 @@ public class EmployeeController {
             printMenu();
             System.out.printf("Choose an option: ");
             int choice = Integer.parseInt(scanner.nextLine());
-
             try {
                 switch (choice) {
                     case 1 -> handleAdd();
                     case 2 -> handleRemove();
                     case 3 -> handleUpdate();
-//                    case 4 -> handleSearch();      // placeholder
-//                    case 5 -> handleSort();        // placeholder
-//                    case 6 -> handleStatistics();  // placeholder
-                      case 7 -> handleSave();
-//                    case 8 -> handleLoad();
+//                    case 4 -> handleSearch();
+                    case 5 -> handleSort();
+//                    case 6 -> handleStatistics();
+                    case 7 -> handleSave();
+                    case 8 -> handleLoad();
                     case 9 -> {
                         System.out.println("Do you want to save change?: Y/N ");
                         String option = scanner.nextLine();
@@ -46,7 +50,6 @@ public class EmployeeController {
                     default -> System.out.println("Invalid choice. Please try again.");
                 }
             } catch (RuntimeException e) {
-                // Your custom exceptions
                 System.out.println(e.toString());
             } catch (Exception e) {
                 System.out.println("Unexpected error: " + e.getMessage());
@@ -91,6 +94,53 @@ public class EmployeeController {
         System.out.println("Saved to CSV successfully.");
     }
 
+    private void handleSort() {
+        System.out.println("======== SORTED ========");
+        List<Employee> sortedEmployees;
+        while (true) {
+            System.out.println("Choose your option to sort:");
+            System.out.println("1. Sort by name.");
+            System.out.println("2. Sort by salary.");
+            System.out.println("3. Sort by hire date.");
+            System.out.print("Your choice: ");
+
+            int option = Integer.parseInt(scanner.nextLine());
+            switch (option) {
+                case 1 -> {
+                    sortedEmployees = employeeService.getAllSorted(
+                            Comparator.comparing(Employee::getName, String.CASE_INSENSITIVE_ORDER)
+                    );
+                    break;
+                }
+                case 2 -> {
+                    sortedEmployees = employeeService.getAllSorted(
+                            Comparator.comparingDouble(Employee::getSalary)
+                    );
+                    break;
+                }
+                case 3 -> {
+                    sortedEmployees = employeeService.getAllSorted(
+                            Comparator.comparing(Employee::getHiredDate)
+                    );
+                    break;
+                }
+                default -> {
+                    System.out.println("Invalid choice. Please choose 1-3.");
+                    continue;
+                }
+            }
+            break;
+        }
+        //sortedEmployees.forEach(System.out::println);
+        System.out.println(sortedEmployees);
+    }
+
+    private void handleLoad() {
+        System.out.println("----------*** ALL EMPLOYEES ***----------");
+        List<Employee> employeeList = employeeService.getAll();
+        System.out.println(employeeList);
+    }
+
     private void handleRemove() {
         System.out.println("-----* REMOVE EMPLOYEE *-----");
         String id = notBlank("ID: ");
@@ -103,8 +153,7 @@ public class EmployeeController {
         String id = notBlank("ID: ");
         if (!employeeService.findById(id).isPresent()) {
             System.out.println("ID not exists: " + id + ". Please enter another ID.");
-        }
-        else {
+        } else {
             String name = notBlank("Name: ");
             String email = readEmail("Email (format: name@domain.com): ");
             String phone = readPhone("Phone (digits only, <= 12): ");
@@ -122,9 +171,6 @@ public class EmployeeController {
     }
 
 
-
-
-
     private String notBlank(String field) {
         while (true) {
             System.out.printf(field);
@@ -139,7 +185,8 @@ public class EmployeeController {
     private Double readDouble(String field) {
         while (true) {
             System.out.printf(field);
-            String value = scanner.nextLine();
+            String value = scanner.nextLine().replace(",", ".");
+
             try {
                 return Double.parseDouble(value);
             } catch (NumberFormatException e) {
@@ -172,10 +219,14 @@ public class EmployeeController {
 
             String input = scanner.nextLine().trim();
             switch (input) {
-                case "1": return EmployeeType.FULL_TIME;
-                case "2": return EmployeeType.PART_TIME;
-                case "3": return EmployeeType.INTERN;
-                case "4": return EmployeeType.ONSITE;
+                case "1":
+                    return EmployeeType.FULL_TIME;
+                case "2":
+                    return EmployeeType.PART_TIME;
+                case "3":
+                    return EmployeeType.INTERN;
+                case "4":
+                    return EmployeeType.ONSITE;
                 default:
                     System.out.println("Invalid choice. Please choose 1-4.");
             }
@@ -191,8 +242,10 @@ public class EmployeeController {
 
             String input = scanner.nextLine().trim();
             switch (input) {
-                case "1": return Status.ACTIVE;
-                case "2": return Status.INACTIVE;
+                case "1":
+                    return Status.ACTIVE;
+                case "2":
+                    return Status.INACTIVE;
                 default:
                     System.out.println("Invalid choice. Please choose 1-2.");
             }
@@ -206,6 +259,7 @@ public class EmployeeController {
             System.out.println("Invalid email. Example: name@domain.com");
         }
     }
+
     private String readPhone(String field) {
         while (true) {
             String phone = notBlank(field);

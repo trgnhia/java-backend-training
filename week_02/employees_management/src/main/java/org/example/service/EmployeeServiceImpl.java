@@ -7,6 +7,7 @@ import org.example.validation.EmployeeValidator;
 
 import java.util.Map;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class EmployeeServiceImpl implements EmployeeService{
     private final Map<String, Employee> employees = new HashMap<>();
@@ -25,6 +26,13 @@ public class EmployeeServiceImpl implements EmployeeService{
         for (Employee e : loadedEmployees) {
             employees.put(e.getId(), e);
         }
+    }
+
+    @Override
+    public List<Employee> getAllSorted(Comparator<Employee> comparator) {
+        return employees.values().stream()
+                .sorted(comparator)
+                .collect(Collectors.toList());
     }
 
     @Override

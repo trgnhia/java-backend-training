@@ -12,4 +12,5 @@ public interface EmployeeService {
     List<Employee> getAll ();
     void saveToFile();
     void loadFromFile();
+    List<Employee> getAllSorted(Comparator<Employee> comparator);
 }
