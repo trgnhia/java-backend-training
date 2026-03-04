@@ -2,6 +2,7 @@ package org.example.service;
 
 import org.example.exception.*;
 import org.example.model.Employee;
+import org.example.storage.EmployeeStorage;
 import org.example.validation.EmployeeValidator;
 
 import java.util.Map;
@@ -9,7 +10,25 @@ import java.util.*;
 
 public class EmployeeServiceImpl implements EmployeeService{
     private final Map<String, Employee> employees = new HashMap<>();
-    private final EmployeeValidator employeeValidator = new EmployeeValidator();
+    private final EmployeeValidator employeeValidator;
+    private final EmployeeStorage employeeStorage;
+
+    public EmployeeServiceImpl(EmployeeStorage employeeStorage, EmployeeValidator employeeValidator) {
+        this.employeeStorage = employeeStorage;
+        this.employeeValidator = employeeValidator;
+    }
+
+    public void loadFromFile() {
+        List<Employee> loadedEmployees = employeeStorage.loadAll();
+        employees.clear();
+        for (Employee e : loadedEmployees) {
+            employees.put(e.getId(), e);
+        }
+    }
+
+    public void saveToFile() {
+        employeeStorage.saveAll(employees.values());
+    }
 
     @Override
     public void addEmployee(Employee employee) {

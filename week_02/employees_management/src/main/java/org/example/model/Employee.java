@@ -14,17 +14,26 @@ public class Employee {
     private double salary;
     private LocalDate hiredDate;
     private EmployeeType employeeType;
-    private Status  status;
+    private Status status;
 
-    public Employee(String department, String email, EmployeeType employeeType, LocalDate hiredDate, String id, String name, String phone, double salary, Status status) {
-        this.department = department;
-        this.email = email;
-        this.employeeType = employeeType;
-        this.hiredDate = hiredDate;
+    public Employee(String id,
+                    String name,
+                    String email,
+                    String phone,
+                    String department,
+                    EmployeeType employeeType,
+                    double salary,
+                    LocalDate hiredDate,
+                    Status status) {
+
         this.id = id;
         this.name = name;
+        this.email = email;
         this.phone = phone;
+        this.department = department;
+        this.employeeType = employeeType;
         this.salary = salary;
+        this.hiredDate = hiredDate;
         this.status = status;
     }
 
