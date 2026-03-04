@@ -60,7 +60,6 @@ public class CsvEmployeeStorage implements EmployeeStorage{
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath))) {
 
             for (Employee e : employees) {
-
                 String line = String.join(",",
                         e.getId(),
                         e.getName(),
@@ -72,7 +71,6 @@ public class CsvEmployeeStorage implements EmployeeStorage{
                         e.getHiredDate().toString(),
                         e.getStatus().name()
                 );
-
                 writer.write(line);
                 writer.newLine();
             }

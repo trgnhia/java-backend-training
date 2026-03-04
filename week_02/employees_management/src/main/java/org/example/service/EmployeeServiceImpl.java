@@ -18,6 +18,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         this.employeeValidator = employeeValidator;
     }
 
+    @Override
     public void loadFromFile() {
         List<Employee> loadedEmployees = employeeStorage.loadAll();
         employees.clear();
@@ -26,6 +27,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         }
     }
 
+    @Override
     public void saveToFile() {
         employeeStorage.saveAll(employees.values());
     }
@@ -60,11 +62,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 
     @Override
     public Optional<Employee> findById(String id) {
-        if (!employees.containsKey(id)) {
-            throw new ResourceNotFoundException(id);
-        }
-        Employee employee = employees.get(id);
-        return Optional.of(employee);
+        return Optional.ofNullable(employees.get(id));
     }
 
     @Override

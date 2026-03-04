@@ -3,5 +3,6 @@ package org.example.enums;
 public enum EmployeeType {
     FULL_TIME,
     INTERN,
-    ONSITE;
+    ONSITE,
+    PART_TIME;
 }

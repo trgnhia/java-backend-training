@@ -10,4 +10,6 @@ public interface EmployeeService {
     void updateEmployee (String id, Employee employee);
     Optional<Employee> findById (String id);
     List<Employee> getAll ();
+    void saveToFile();
+    void loadFromFile();
 }

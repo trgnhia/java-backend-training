@@ -7,7 +7,7 @@ public class Validator {
             Pattern.compile("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
 
     private static final Pattern PHONE_PATTERN =
-            Pattern.compile("^0\\d{9,10}$");
+            Pattern.compile("^\\d{1,12}$");
     public static boolean isValidEmail (String email) {
         return email != null && EMAIL_PATTERN.matcher(email).matches();
     }
