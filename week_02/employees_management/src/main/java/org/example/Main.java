@@ -20,9 +20,14 @@ public class Main {
 
         service.loadFromFile();
 
+        BackGroundScheduler scheduler = new BackGroundScheduler(service);
+        scheduler.start();
+
         EmployeeController controller =
                 new EmployeeController(service);
 
         controller.start();
+        scheduler.stop();
+
     }
 }
