@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.enums.EmployeeType;
 import org.example.model.Employee;
 
 import java.util.*;
@@ -20,5 +21,9 @@ public interface EmployeeService {
     int employeeCount();
     List<Employee> getActivateEmployee();
     double getHighestSalary();
-
+    List<Employee> searchByName(String keyword);
+    List<Employee> searchByDepartment(String keyword);
+    List<Employee> searchByType(EmployeeType type);
+    List<Employee> searchBySalaryRange(double min, double max);
+    List<Double> getTop3HighestSalary();
 }

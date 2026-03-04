@@ -88,6 +88,49 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
+    public List<Employee> searchByName(String name) {
+        String k = name.trim().toLowerCase();
+        return employees.values().stream()
+                .filter(e -> e.getName() != null && e.getName().toLowerCase().contains(k))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Employee> searchByDepartment(String department) {
+        String k = department.trim().toLowerCase();
+        return employees.values().stream()
+                .filter(e -> e.getDepartment() != null && e.getDepartment().toLowerCase().contains(k))
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Employee> searchByType(EmployeeType type) {
+        return employees.values().stream()
+                .filter(e -> e.getEmployeeType() == type)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Employee> searchBySalaryRange(double min, double max) {
+        double low = Math.min(min, max);
+        double high = Math.max(min, max);
+
+        return employees.values().stream()
+                .filter(e -> e.getSalary() >= low && e.getSalary() <= high)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<Double> getTop3HighestSalary() {
+        return employees.values().stream()
+                .map(Employee::getSalary)
+                .distinct()
+                .sorted(Comparator.reverseOrder())
+                .limit(3)
+                .toList();
+    }
+
+    @Override
     public void saveToFile() {
         employeeStorage.saveAll(employees.values());
     }

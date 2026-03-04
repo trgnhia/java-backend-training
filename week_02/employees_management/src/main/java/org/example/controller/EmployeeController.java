@@ -102,8 +102,8 @@ public class EmployeeController {
             System.out.println("1. Number of employee.      4. Highest salary.");
             System.out.println("2. Summary salary.          5. Top 3 highest salary.");
             System.out.println("3. Average salary.          6. Activate employees");
-            int option = Integer.parseInt(scanner.nextLine());
             System.out.print("Your choice: ");
+            int option = Integer.parseInt(scanner.nextLine());
             switch (option) {
                 case 1 -> {
                     System.out.println("Number of employees : " + employeeService.employeeCount());
@@ -118,7 +118,7 @@ public class EmployeeController {
                     System.out.printf("Highest salary of company: " + employeeService.getHighestSalary());
                 }
                 case 5 -> {
-                    System.out.printf("Average salary of company: " + employeeService.getAverageOfSalary());
+                    System.out.printf("Top 3 highest salary: " + employeeService.getTop3HighestSalary());
                 }
                 case 6 -> {
                     System.out.printf("Activate employee of company: " + employeeService.getActivateEmployee());
@@ -133,30 +133,51 @@ public class EmployeeController {
     }
 
     private void handleSearch() {
-        System.out.println("======== SREACH WITH FILTER ========");
-        List<Employee> employees;
+        System.out.println("======== SEARCH WITH FILTER ========");
+
+        List<Employee> result;
+
         while (true) {
             System.out.println("Choose your option to filter:");
-            System.out.println("1. Search by salary greater.        3. Search by salary range.");
-            System.out.println("2. Search by name.                  4. Search by employee type.");
-            System.out.println("            5. Search by department.");
+            System.out.println("1. Search by name");
+            System.out.println("2. Search by department");
+            System.out.println("3. Search by employee type");
+            System.out.println("4. Search by salary range");
             System.out.print("Your choice: ");
+
             int option = Integer.parseInt(scanner.nextLine());
+
             switch (option) {
                 case 1 -> {
-                    System.out.printf("Salary: ");
-                    Double salary = Double.parseDouble(scanner.nextLine().replace(",", "."));
-                    employees = employeeService.getEmployeeHaveGreaterSalary(salary);
+                    String keyword = notBlank("Enter Name: ");
+                    result = employeeService.searchByName(keyword);
                 }
-
+                case 2 -> {
+                    String keyword = notBlank("Enter Department: ");
+                    result = employeeService.searchByDepartment(keyword);
+                }
+                case 3 -> {
+                    EmployeeType type = chooseEmployeeType();
+                    result = employeeService.searchByType(type);
+                }
+                case 4 -> {
+                    double min = readDouble("Min salary: ");
+                    double max = readDouble("Max salary: ");
+                    result = employeeService.searchBySalaryRange(min, max);
+                }
                 default -> {
-                    System.out.println("Invalid choice. Please choose 1-5.");
+                    System.out.println("Invalid choice. Please choose 1-4.");
                     continue;
                 }
             }
             break;
         }
-        System.out.println(employees);
+
+        if (result.isEmpty()) {
+            System.out.println("No employees found.");
+        } else {
+            result.forEach(System.out::println);
+        }
     }
 
     private void handleSort() {
