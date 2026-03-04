@@ -13,4 +13,12 @@ public interface EmployeeService {
     void saveToFile();
     void loadFromFile();
     List<Employee> getAllSorted(Comparator<Employee> comparator);
+    List<Employee> getEmployeeHaveGreaterSalary(double salary);
+    double getSummaryOfSalary ();
+    double getAverageOfSalary ();
+    List<Employee> getEmployeesHaveHighestSalary();
+    int employeeCount();
+    List<Employee> getActivateEmployee();
+    double getHighestSalary();
+
 }

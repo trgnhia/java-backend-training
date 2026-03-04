@@ -33,9 +33,9 @@ public class EmployeeController {
                     case 1 -> handleAdd();
                     case 2 -> handleRemove();
                     case 3 -> handleUpdate();
-//                    case 4 -> handleSearch();
+                    case 4 -> handleSearch();
                     case 5 -> handleSort();
-//                    case 6 -> handleStatistics();
+                    case 6 -> handleStatistics();
                     case 7 -> handleSave();
                     case 8 -> handleLoad();
                     case 9 -> {
@@ -94,6 +94,71 @@ public class EmployeeController {
         System.out.println("Saved to CSV successfully.");
     }
 
+    private void handleStatistics() {
+        System.out.println("======== STATISTICS ========");
+        List<Employee> employees;
+        while (true) {
+            System.out.println("Choose your option to statistics:");
+            System.out.println("1. Number of employee.      4. Highest salary.");
+            System.out.println("2. Summary salary.          5. Top 3 highest salary.");
+            System.out.println("3. Average salary.          6. Activate employees");
+            int option = Integer.parseInt(scanner.nextLine());
+            System.out.print("Your choice: ");
+            switch (option) {
+                case 1 -> {
+                    System.out.println("Number of employees : " + employeeService.employeeCount());
+                }
+                case 2 -> {
+                    System.out.printf("Summary salary of company: " + employeeService.getSummaryOfSalary());
+                }
+                case 3 -> {
+                    System.out.printf("Average salary of company: " + employeeService.getAverageOfSalary());
+                }
+                case 4 -> {
+                    System.out.printf("Highest salary of company: " + employeeService.getHighestSalary());
+                }
+                case 5 -> {
+                    System.out.printf("Average salary of company: " + employeeService.getAverageOfSalary());
+                }
+                case 6 -> {
+                    System.out.printf("Activate employee of company: " + employeeService.getActivateEmployee());
+                }
+                default -> {
+                    System.out.println("Invalid choice. Please choose 1-6.");
+                    continue;
+                }
+            }
+            break;
+        }
+    }
+
+    private void handleSearch() {
+        System.out.println("======== SREACH WITH FILTER ========");
+        List<Employee> employees;
+        while (true) {
+            System.out.println("Choose your option to filter:");
+            System.out.println("1. Search by salary greater.        3. Search by salary range.");
+            System.out.println("2. Search by name.                  4. Search by employee type.");
+            System.out.println("            5. Search by department.");
+            System.out.print("Your choice: ");
+            int option = Integer.parseInt(scanner.nextLine());
+            switch (option) {
+                case 1 -> {
+                    System.out.printf("Salary: ");
+                    Double salary = Double.parseDouble(scanner.nextLine().replace(",", "."));
+                    employees = employeeService.getEmployeeHaveGreaterSalary(salary);
+                }
+
+                default -> {
+                    System.out.println("Invalid choice. Please choose 1-5.");
+                    continue;
+                }
+            }
+            break;
+        }
+        System.out.println(employees);
+    }
+
     private void handleSort() {
         System.out.println("======== SORTED ========");
         List<Employee> sortedEmployees;
@@ -110,19 +175,16 @@ public class EmployeeController {
                     sortedEmployees = employeeService.getAllSorted(
                             Comparator.comparing(Employee::getName, String.CASE_INSENSITIVE_ORDER)
                     );
-                    break;
                 }
                 case 2 -> {
                     sortedEmployees = employeeService.getAllSorted(
                             Comparator.comparingDouble(Employee::getSalary)
                     );
-                    break;
                 }
                 case 3 -> {
                     sortedEmployees = employeeService.getAllSorted(
                             Comparator.comparing(Employee::getHiredDate)
                     );
-                    break;
                 }
                 default -> {
                     System.out.println("Invalid choice. Please choose 1-3.");
