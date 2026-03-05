@@ -26,4 +26,5 @@ public interface EmployeeService {
     List<Employee> searchByType(EmployeeType type);
     List<Employee> searchBySalaryRange(double min, double max);
     List<Double> getTop3HighestSalary();
+    Map<String, List<Employee>> getEmployeesByDepartment ();
 }

@@ -131,6 +131,12 @@ public class EmployeeServiceImpl implements EmployeeService{
     }
 
     @Override
+    public Map<String,List<Employee>> getEmployeesByDepartment () {
+        return employees.values().stream()
+                .collect(Collectors.groupingBy(Employee::getDepartment));
+    }
+
+    @Override
     public void saveToFile() {
         employeeStorage.saveAll(employees.values());
     }

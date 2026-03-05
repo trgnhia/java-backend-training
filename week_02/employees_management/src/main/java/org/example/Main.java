@@ -28,6 +28,5 @@ public class Main {
 
         controller.start();
         scheduler.stop();
-
     }
 }

@@ -180,6 +180,7 @@ public class EmployeeController {
             System.out.println("1. Number of employee.      4. Highest salary.");
             System.out.println("2. Summary salary.          5. Top 3 highest salary.");
             System.out.println("3. Average salary.          6. Activate employees");
+            System.out.println("7. Statistic by department.");
             int option = input.readInt("Your choice: ");
 
             switch (option) {
@@ -189,6 +190,7 @@ public class EmployeeController {
                 case 4 -> System.out.println("Highest salary of company: " + employeeService.getHighestSalary());
                 case 5 -> System.out.println("Top 3 highest salary: " + employeeService.getTop3HighestSalary());
                 case 6 -> System.out.println("Activate employee of company: " + employeeService.getActivateEmployee());
+                case 7 -> System.out.println("Employee by partment: " + employeeService.getEmployeesByDepartment());
                 default -> {
                     System.out.println("Invalid choice. Please choose 1-6.");
                     continue;
